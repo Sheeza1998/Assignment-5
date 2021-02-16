@@ -11,10 +11,10 @@ namespace Assignment_5.Models
 {
     public class SeedData
     {
-        public static void EnsurePopulated(IApplicationbuilder application)
+        public static void EnsurePopulated(IApplicationBuilder application)
         {
             BookstoreDBcontext context = application.ApplicationServices.CreateScope().
-                ServiceProvider.GetRequiredServices<BookstoreDBcontext>();
+                ServiceProvider.GetRequiredService<BookstoreDBcontext>();
 
             if(context.Database.GetPendingMigrations().Any())
             {
@@ -28,7 +28,7 @@ namespace Assignment_5.Models
                     new Project
                     {
                         Title = "Les Miserables",
-                        Author = "Victor Hugo",
+                        Author = null,
                         Publisher = "Signet",
                         ISBN = "978-0451419439",
                         Category = "Fiction, Classic",
@@ -40,7 +40,8 @@ namespace Assignment_5.Models
                         Title = "Team of Rivals",
                         Author = "Doris Kearns Goodwin",
                         Publisher = "Simon & Schuster ",
-                        ISBN = "978-0743270755",
+                        //Checking for valid ISBN
+                        ISBN = "978-0743270755000000000000000000000000000000000000000000000000",
                         Category = "Non-Fiction, Biography ",
                         Price = "$14.58"
                     },
@@ -131,9 +132,5 @@ namespace Assignment_5.Models
             }
         }
 
-        internal static void EnsurePopulated(IApplicationBuilder app)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

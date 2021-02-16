@@ -16,6 +16,7 @@ namespace Assignment_5.Models
         [Required]
         public string Author { get; set; }
         [Required]
+
         public string Publisher { get; set; }
         [Required]
         [RegularExpression(@"^\d{2,3}[-]{0,1}\d{10}|\d{9,11}$", ErrorMessage = "Not a valid ISBN")]

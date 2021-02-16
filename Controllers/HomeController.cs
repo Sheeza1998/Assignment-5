@@ -13,14 +13,17 @@ namespace Assignment_5.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private BookstoreRepository _repository;
+
+        public HomeController(ILogger<HomeController> logger, BookstoreRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_repository.Pros);
         }
 
         public IActionResult Privacy()
