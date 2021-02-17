@@ -4,20 +4,47 @@
 
 @model IQueryable<Project>
 
-<div class="text-center">
+<div class="text-center" style="background-color:azure;">
     <h1 class="display-4">WELCOME TO THE ONLINE BOOKSTORE</h1>
 </div>
 
-<div>
-    @foreach (var x in Model)
-    {
-    <div>
-        <h3>@x.Title</h3>
-        <p>@x.Author</p>
-        <p>@x.Publisher</p>
-        <p>@x.ISBN</p>
-        <p>@x.Category</p>
-        <p>@x.Price</p>
-    </div>
-    }
+<div class="text-center" style= "background-color: lightskyblue;">
+<table>
+    <thead>
+        <tr style="padding:0.2%;">
+            <th>BookID</th>
+            <th>Title</th>
+            <th>Author First Name</th>
+            <th style="text-indent:1em;">Author Last Name</th>
+            <th>Publisher</th>
+            <th>ISBN</th>
+            <th>Classification</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+        <tr style="text-indent:1em; padding:0.2%;">
+            <td>@x.Bookid</td>
+            <td>@x.Title</td>
+            <td>@x.Author_FirstName</td>
+            <td>@x.Author_LastName</td>
+            <td>@x.Publisher</td>
+            <td>@x.ISBN</td>
+            <td>@x.Classification</td>
+            <td>@x.Category</td>
+            <td>$@x.Price</td>
+        </tr>       
+        }
+    </tbody>
+</table>
 </div>
+<br />
+<br />
+<br />
+<br />
+<footer class="text-center" style="background-color:azure;font-family:'Times New Roman', Times, serif;">
+    <p>BookShop: 1565 N University Ave: (801)-897-4521</p>
+</footer>

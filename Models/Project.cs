@@ -14,9 +14,10 @@ namespace Assignment_5.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Author { get; set; }
+        public string Author_FirstName { get; set; }
         [Required]
-
+        public string Author_LastName { get; set; }
+        [Required]
         public string Publisher { get; set; }
         [Required]
         [RegularExpression(@"^\d{2,3}[-]{0,1}\d{10}|\d{9,11}$", ErrorMessage = "Not a valid ISBN")]
@@ -24,7 +25,9 @@ namespace Assignment_5.Models
         [Required]
         public string Category { get; set; }
         [Required]
-        public string Price { get; set; }
+        public string Classification { get; set; }
+        [Required]
+        public double Price { get; set; }
 
     }
 }
