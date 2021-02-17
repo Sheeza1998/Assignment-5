@@ -15,12 +15,17 @@ namespace Assignment_5.Models
         public string Title { get; set; }
         [Required]
         public string Author_FirstName { get; set; }
+
+        //Accounts for null values
+        public string Author_MiddleName { get; set; }
         [Required]
         public string Author_LastName { get; set; }
         [Required]
         public string Publisher { get; set; }
-        [Required]
+
+        //validating the ISBN
         [RegularExpression(@"^\d{2,3}[-]{0,1}\d{10}|\d{9,11}$", ErrorMessage = "Not a valid ISBN")]
+        [Required]
         public string ISBN { get; set; }
         [Required]
         public string Category { get; set; }

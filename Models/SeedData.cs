@@ -29,6 +29,7 @@ namespace Assignment_5.Models
                     {
                         Title = "Les Miserables",
                         Author_FirstName = "Victor",
+                        Author_MiddleName = null,
                         Author_LastName = "Hugo",
                         Publisher = "Signet",
                         ISBN = "978-0451419439",
@@ -40,10 +41,10 @@ namespace Assignment_5.Models
                     new Project
                     {
                         Title = "Team of Rivals",
-                        Author_FirstName = "Doris Kearns",
+                        Author_FirstName = "Doris",
+                        Author_MiddleName = "Kearns",
                         Author_LastName = "Goodwin",
-                        Publisher = "Simon & Schuster ",
-                        //Checking for valid ISBN
+                        Publisher = "Simon & Schuster",
                         ISBN = "978-0743270755",
                         Classification = "Non-Fiction",
                         Category = "Biography ",
@@ -54,6 +55,7 @@ namespace Assignment_5.Models
                     {
                         Title = "The Snowball",
                         Author_FirstName = "Alice",
+                        Author_MiddleName = null,
                         Author_LastName = "Schroeder",
                         Publisher = "Bantam",
                         ISBN = "978-0553384611",
@@ -66,6 +68,7 @@ namespace Assignment_5.Models
                     {
                         Title = "American Ulysses",
                         Author_FirstName = "Ronald",
+                        Author_MiddleName = null,
                         Author_LastName = "C.White",
                         Publisher = "Random House",
                         ISBN = "978-0812981254",
@@ -78,6 +81,7 @@ namespace Assignment_5.Models
                     {
                         Title = "Unbroken",
                         Author_FirstName = "Laura",
+                        Author_MiddleName = null,
                         Author_LastName = "Hillenbrand",
                         Publisher = "Random House",
                         ISBN = "978-0812974492 ",
@@ -90,6 +94,7 @@ namespace Assignment_5.Models
                     {
                         Title = "The Great Train Robbery",
                         Author_FirstName = "Michael",
+                        Author_MiddleName = null,
                         Author_LastName = "Crichton",
                         Publisher = "Vintage",
                         ISBN = "978-0804171281",
@@ -102,6 +107,7 @@ namespace Assignment_5.Models
                     {
                         Title = "Deep Work",
                         Author_FirstName = "Cal",
+                        Author_MiddleName = null,
                         Author_LastName = "Newport",
                         Publisher = "Grand Central Publishing",
                         ISBN = "978-1455586691",
@@ -114,6 +120,7 @@ namespace Assignment_5.Models
                     {
                         Title = "It's Your Ship",
                         Author_FirstName = "Michael",
+                        Author_MiddleName = null,
                         Author_LastName = "Abrashoff",
                         Publisher = "Grand Central Publishing",
                         ISBN = "978-1455523023",
@@ -126,6 +133,7 @@ namespace Assignment_5.Models
                     {
                         Title = "The Virgin Way",
                         Author_FirstName = "Richard",
+                        Author_MiddleName = null,
                         Author_LastName = "Branson",
                         Publisher = "Portfolio",
                         ISBN = "978-1591847984",
@@ -138,6 +146,7 @@ namespace Assignment_5.Models
                     {
                         Title = "Sycamore Row",
                         Author_FirstName = "John",
+                        Author_MiddleName = null,
                         Author_LastName = "Grisham",
                         Publisher = "Bantam",
                         ISBN = "978-0553393613",
