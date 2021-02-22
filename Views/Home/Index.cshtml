@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model IQueryable<Project>
+@model ProjectListViewModel
 
 <div class="text-center">
     <h1 class="display-4">WELCOME TO THE ONLINE BOOKSTORE</h1>
@@ -10,39 +10,54 @@
 <br />
 <br />
 <div class="table-responsive-sm">
-<table class="table table-striped; table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th>BookID</th>
-            <th>Title</th>
-            <th>Author First Name</th>
-            <th>Author Middle Name</th>
-            <th>Author Last Name</th>
-            <th>Publisher</th>
-            <th>ISBN</th>
-            <th>Classification</th>
-            <th>Category</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody class="table-success">
-        @foreach (var x in Model)
-        {
-        <tr>
-            <td>@x.Bookid</td>
-            <td>@x.Title</td>
-            <td>@x.Author_FirstName</td>
-            <td>@x.Author_MiddleName</td>
-            <td>@x.Author_LastName</td>
-            <td>@x.Publisher</td>
-            <td>@x.ISBN</td>
-            <td>@x.Classification</td>
-            <td>@x.Category</td>
-            <td>$@x.Price</td>
-        </tr>       
-        }
-    </tbody>
-</table>
+    <table class="table table-striped; table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>BookID</th>
+                <th>Title</th>
+                <th>Author First Name</th>
+                <th>Author Middle Name</th>
+                <th>Author Last Name</th>
+                <th>Publisher</th>
+                <th>ISBN</th>
+                <th>Classification</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th># Pages</th>
+            </tr>
+        </thead>
+        <tbody class="table-success">
+            @foreach (var x in Model.Projects)
+            {
+                <tr>
+                    <td>@x.Bookid</td>
+                    <td>@x.Title</td>
+                    <td>@x.Author_FirstName</td>
+                    <td>@x.Author_MiddleName</td>
+                    <td>@x.Author_LastName</td>
+                    <td>@x.Publisher</td>
+                    <td>@x.ISBN</td>
+                    <td>@x.Classification</td>
+                    <td>@x.Category</td>
+                    <td>$@x.Price</td>
+                    <td>@x.Pages</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+<div page-model="@Model.Paginginfo" page-action="Index">
+
+</div>
+<div>
+    @for (int i = 1; i <= Model.Paginginfo.TotalPages; ++i)
+    {
+        //Using btn-outline-success class to change the color of the buttons
+        <span class="btn btn-outline-dark btn-group-lg">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
+
+    }
 </div>
 <br />
 <br />
