@@ -3,12 +3,19 @@
 }
 
 @model ProjectListViewModel
+<style type="text/css">
+    .current {
+        background-color:azure;
+    }
+</style>
 
 <div class="text-center">
+    <!--Using the display-4 class to format heading-->
     <h1 class="display-4">WELCOME TO THE ONLINE BOOKSTORE</h1>
 </div>
 <br />
 <br />
+<!--Using the table-responsive-sm class to adjust the table size according to the elements-->
 <div class="table-responsive-sm">
     <table class="table table-striped; table-bordered">
         <thead class="thead-dark">
@@ -51,11 +58,11 @@
 <div page-model="@Model.Paginginfo" page-action="Index">
 
 </div>
-<div>
+<div class="text-center">
     @for (int i = 1; i <= Model.Paginginfo.TotalPages; ++i)
     {
-        //Using btn-outline-success class to change the color of the buttons
-        <span class="btn btn-outline-dark btn-group-lg">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
+        //Using btn-outline-success to outline the buttons and current class to highlight the buttons
+        <span class="current btn btn-outline-dark">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
 
     }
 </div>
@@ -64,5 +71,5 @@
 <br />
 <br />
 <footer class="text-center">
-    <p class="font-italic">####:BookShop:1565 N University Ave:(801)-897-4521:####</p>
+    <p class="font-weight-light; font-italic">####:BookShop:1565 N University Ave:(801)-897-4521:####</p>
 </footer>
