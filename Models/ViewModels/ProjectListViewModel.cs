@@ -9,5 +9,6 @@ namespace Assignment_5.Models.ViewModels
     {
         public IEnumerable<Project> Projects { get; set; }
         public PagingInfo Paginginfo { get; set; }
+        public PagingInfo PagingInfo { get; internal set; }
     }
 }

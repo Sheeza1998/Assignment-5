@@ -36,7 +36,7 @@ namespace Assignment_5.Controllers
                 .Skip((Page - 1) * ItemsPerPage)
                 .Take(ItemsPerPage)
                 ,
-                Paginginfo = new PagingInfo
+                PagingInfo = new PagingInfo
                 {
                     CurrentPage = Page,
                     ItemsPerPage = ItemsPerPage,

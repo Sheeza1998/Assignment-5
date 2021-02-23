@@ -5,7 +5,7 @@
 @model ProjectListViewModel
 <style type="text/css">
     .current {
-        background-color:azure;
+        background-color: azure;
     }
 </style>
 
@@ -55,21 +55,21 @@
     </table>
 </div>
 
-<div page-model="@Model.Paginginfo" page-action="Index">
+<div page-model="@Model.PagingInfo" page-action="Index"></div>
 
-</div>
 <div class="text-center">
-    @for (int i = 1; i <= Model.Paginginfo.TotalPages; ++i)
-    {
-        //Using btn-outline-success to outline the buttons and current class to highlight the buttons
-        <span class="current btn btn-outline-dark">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
+    @for (int i = 1; i <= Model.PagingInfo.TotalPages; ++i)
+        {
+            //Using btn-outline-success to outline the buttons and current class to highlight the buttons
+            <span class="btn btn-outline-dark btn-lg">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
 
-    }
+        }
 </div>
 <br />
 <br />
 <br />
 <br />
+
 <footer class="text-center">
     <p class="font-weight-light; font-italic">####:BookShop:1565 N University Ave:(801)-897-4521:####</p>
 </footer>
