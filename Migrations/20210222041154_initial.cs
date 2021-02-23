@@ -2,7 +2,7 @@
 
 namespace Assignment_5.Migrations
 {
-    public partial class BookStore : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,8 @@ namespace Assignment_5.Migrations
                     ISBN = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Classification = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false)
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Pages = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

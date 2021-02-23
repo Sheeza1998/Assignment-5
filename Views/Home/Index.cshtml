@@ -2,52 +2,74 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model IQueryable<Project>
+@model ProjectListViewModel
+<style type="text/css">
+    .current {
+        background-color: azure;
+    }
+</style>
 
 <div class="text-center">
+    <!--Using the display-4 class to format heading-->
     <h1 class="display-4">WELCOME TO THE ONLINE BOOKSTORE</h1>
 </div>
 <br />
 <br />
+<!--Using the table-responsive-sm class to adjust the table size according to the elements-->
 <div class="table-responsive-sm">
-<table class="table table-striped; table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th>BookID</th>
-            <th>Title</th>
-            <th>Author First Name</th>
-            <th>Author Middle Name</th>
-            <th>Author Last Name</th>
-            <th>Publisher</th>
-            <th>ISBN</th>
-            <th>Classification</th>
-            <th>Category</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody class="table-success">
-        @foreach (var x in Model)
+    <table class="table table-striped; table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>BookID</th>
+                <th>Title</th>
+                <th>Author First Name</th>
+                <th>Author Middle Name</th>
+                <th>Author Last Name</th>
+                <th>Publisher</th>
+                <th>ISBN</th>
+                <th>Classification</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th># Pages</th>
+            </tr>
+        </thead>
+        <tbody class="table-success">
+            @foreach (var x in Model.Projects)
+            {
+                <tr>
+                    <td>@x.Bookid</td>
+                    <td>@x.Title</td>
+                    <td>@x.Author_FirstName</td>
+                    <td>@x.Author_MiddleName</td>
+                    <td>@x.Author_LastName</td>
+                    <td>@x.Publisher</td>
+                    <td>@x.ISBN</td>
+                    <td>@x.Classification</td>
+                    <td>@x.Category</td>
+                    <td>$@x.Price</td>
+                    <td>@x.Pages</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+<div page-model="@Model.PagingInfo" page-action="Index"></div>
+
+<div class="text-center">
+    @for (int i = 1; i <= Model.PagingInfo.TotalPages; ++i)
         {
-        <tr>
-            <td>@x.Bookid</td>
-            <td>@x.Title</td>
-            <td>@x.Author_FirstName</td>
-            <td>@x.Author_MiddleName</td>
-            <td>@x.Author_LastName</td>
-            <td>@x.Publisher</td>
-            <td>@x.ISBN</td>
-            <td>@x.Classification</td>
-            <td>@x.Category</td>
-            <td>$@x.Price</td>
-        </tr>       
+            //Using btn-outline-success to outline the buttons and current class to highlight the buttons
+            <span class="btn btn-outline-dark btn-lg">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
+
         }
-    </tbody>
-</table>
 </div>
 <br />
 <br />
 <br />
 <br />
+
 <footer class="text-center">
-    <p class="font-italic">####:BookShop:1565 N University Ave:(801)-897-4521:####</p>
+    <p class="font-weight-light; font-italic">####:BookShop:1565 N University Ave:(801)-897-4521:####</p>
 </footer>
