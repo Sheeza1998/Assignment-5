@@ -15,7 +15,7 @@ namespace Assignment_5.Components
         {
             repository = repo;
         }
-        public IViewComponentResult invoke()
+        public IViewComponentResult Invoke()
         {
             ViewBag.SelectCategory = RouteData?.Values["category"];
             return View(repository.Pros

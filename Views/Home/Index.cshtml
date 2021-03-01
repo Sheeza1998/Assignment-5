@@ -37,15 +37,15 @@
         </tbody>
     </table>
 </div>
-<!--color change issues-->
-<div page-model="@Model.PagingInfo" page-action="Index"
-     page-class-enabled ="true" page-url-category="@Model.CurrentCategory"></div>
+@*<div class="color:white" page-model="@Model.PagingInfo" page-action="Index"
+     page-classes-enabled="true" page-url-category="@Model.CurrentCategory"></div>*@
 
-<div class="text-center">
+<div class="text-center" page-model="@Model.PagingInfo" page-action="Index"
+     page-classes-enabled="true" page-url-category="@Model.CurrentCategory">
     @for (int i = 1; i <= Model.PagingInfo.TotalPages; ++i)
         {
             //Using btn-outline-success to outline the buttons and current class to highlight the buttons
-            <span class="btn btn-outline-dark btn-lg">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
+            <span>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
 
         }
 </div>
