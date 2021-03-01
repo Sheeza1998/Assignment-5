@@ -9,6 +9,9 @@ namespace Assignment_5.Models.ViewModels
     {
         public IEnumerable<Project> Projects { get; set; }
         public PagingInfo Paginginfo { get; set; }
-        public PagingInfo PagingInfo { get; internal set; }
+        //Paginginfo is an object
+        public PagingInfo PagingInfo { get; set; }
+        //srting is a variable
+        public string CurrentCategory { get; set; }
     }
 }
