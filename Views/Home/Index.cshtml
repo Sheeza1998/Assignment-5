@@ -9,10 +9,6 @@
     }
 </style>
 
-<div class="text-center">
-    <!--Using the display-4 class to format heading-->
-    <h1 class="display-4">WELCOME TO THE ONLINE BOOKSTORE</h1>
-</div>
 <br />
 <br />
 <!--Using the table-responsive-sm class to adjust the table size according to the elements-->
@@ -36,32 +32,20 @@
         <tbody class="table-success">
             @foreach (var x in Model.Projects)
             {
-                <tr>
-                    <td>@x.Bookid</td>
-                    <td>@x.Title</td>
-                    <td>@x.Author_FirstName</td>
-                    <td>@x.Author_MiddleName</td>
-                    <td>@x.Author_LastName</td>
-                    <td>@x.Publisher</td>
-                    <td>@x.ISBN</td>
-                    <td>@x.Classification</td>
-                    <td>@x.Category</td>
-                    <td>$@x.Price</td>
-                    <td>@x.Pages</td>
-                </tr>
-
+                <partial name="ProjectSummary" model="x" />
             }
         </tbody>
     </table>
 </div>
+@*<div class="color:white" page-model="@Model.PagingInfo" page-action="Index"
+     page-classes-enabled="true" page-url-category="@Model.CurrentCategory"></div>*@
 
-<div page-model="@Model.PagingInfo" page-action="Index"></div>
-
-<div class="text-center">
+<div class="text-center" page-model="@Model.PagingInfo" page-action="Index"
+     page-classes-enabled="true" page-url-category="@Model.CurrentCategory">
     @for (int i = 1; i <= Model.PagingInfo.TotalPages; ++i)
         {
             //Using btn-outline-success to outline the buttons and current class to highlight the buttons
-            <span class="btn btn-outline-dark btn-lg">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
+            <span>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</span>
 
         }
 </div>

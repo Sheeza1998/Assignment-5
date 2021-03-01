@@ -27,11 +27,12 @@ namespace Assignment_5.Controllers
         }
 
         //default page
-        public IActionResult Index(int Page = 1)
+        public IActionResult Index(string Category, int Page = 1)
         {
             return View(new ProjectListViewModel
             {
                 Projects = _repository.Pros
+                .Where(p => Category == null || p.Category == Category)
                 .OrderBy(p => p.Bookid)
                 .Skip((Page - 1) * ItemsPerPage)
                 .Take(ItemsPerPage)
@@ -40,9 +41,11 @@ namespace Assignment_5.Controllers
                 {
                     CurrentPage = Page,
                     ItemsPerPage = ItemsPerPage,
-                    TotalNumItems = _repository.Pros.Count()
-                }
-            });
+                    TotalNumItems = Category == null? _repository.Pros.Count():
+                    _repository.Pros.Where(x => x.Category == Category).Count()
+                },
+                CurrentCategory = Category
+            }); ;
 
         }
 
