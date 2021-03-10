@@ -1,6 +1,7 @@
 using Assignment_5.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,10 +29,15 @@ namespace Assignment_5
             services.AddControllersWithViews();
             services.AddDbContext<BookstoreDBcontext>(contextOptions =>
            {
-               contextOptions.UseSqlServer(Configuration["ConnectionStrings:BookstoreConnection"]);
+              contextOptions.UseSqlite(Configuration["ConnectionStrings:BookstoreConnection"]);
            });
 
             services.AddScoped<BookstoreRepository, EFBookstoreRepository>();
+            services.AddRazorPages();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         }
 
@@ -50,7 +56,8 @@ namespace Assignment_5
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            //this will setup the session for us
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -79,6 +86,7 @@ namespace Assignment_5
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
 
             SeedData.EnsurePopulated(app);
