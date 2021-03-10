@@ -14,4 +14,11 @@
     <td>@Model.Category</td>
     <td>$@Model.Price</td>
     <td>@Model.Pages</td>
+    <td>
+        <form id="@Model.Bookid" asp-page="/Donate" method="post">
+            <input type="hidden" asp-for="Bookid" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+            <button type="submit" class="btn-dark btn-sm pull-right text-center" style="float:right">AddToCart</button>
+        </form>
+    </td>
 </tr>

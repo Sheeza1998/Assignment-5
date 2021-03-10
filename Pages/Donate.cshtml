@@ -1,0 +1,47 @@
+﻿@page
+@model Assignment_5.Pages.DonateModel
+
+<h2>Your Cart</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Project</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+        <tr>
+            <td>@line.Project.Title</td>
+            <td>@line.Quantity</td>
+            <td>@line.Project.Price</td>
+            <td>@((line.Quantity * line.Project.Price).ToString("c"))</td>
+
+            <td class="text-center">
+                <form asp-page-handler="Remove" method="post">
+                    <input type="hidden" name="Bookid" value="@line.Project.Bookid" />
+                    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                    <button type="submit" class="btn btn-sm btn-dark">Remove</button>
+                </form>
+            </td>
+        </tr>
+
+        }
+    </tbody>
+
+    <tfoot class="font-weight-bold">
+        <tr>
+            <td colspan="3">Total</td>
+            <td>@Model.Cart.ComputeTotalSum().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-dark" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>
